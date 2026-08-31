@@ -1,147 +1,47 @@
-/* eslint-disable @next/next/no-img-element -- next/image is incompatible with the current Vinext runtime. */
+/* eslint-disable @next/next/no-img-element -- Vinext currently renders native images more reliably. */
 
 const cases = [
-  {
-    id: '01',
-    title: 'Faceted Bar Chart',
-    reference: '/cases/01-reference.png',
-    reconstructed: '/cases/01-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '02',
-    title: 'Faceted Scatter Plot',
-    reference: '/cases/02-reference.png',
-    reconstructed: '/cases/02-reconstructed.png',
-    scores: ['16/16', '15/16', '16/16'],
-  },
-  {
-    id: '03',
-    title: 'Marginal Histograms',
-    reference: '/cases/03-reference.png',
-    reconstructed: '/cases/03-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '04',
-    title: 'Line with Highlights',
-    reference: '/cases/04-reference.png',
-    reconstructed: '/cases/04-reconstructed.png',
-    scores: ['16/16', '12/16', '13/16'],
-  },
-  {
-    id: '05',
-    title: 'Box Plot',
-    reference: '/cases/05-reference.png',
-    reconstructed: '/cases/05-reconstructed.png',
-    scores: ['14/16', '15/16', '10/16'],
-  },
-  {
-    id: '06',
-    title: 'OpinionSeer',
-    reference: '/cases/06-reference.png',
-    reconstructed: '/cases/06-reconstructed.png',
-    scores: ['12/16', '13/16', '13/16'],
-  },
-  {
-    id: '07',
-    title: 'iForest',
-    reference: '/cases/07-reference.png',
-    reconstructed: '/cases/07-reconstructed.png',
-    scores: ['16/16', '15/16', '7/16'],
-  },
-  {
-    id: '08',
-    title: 'BitExtract',
-    reference: '/cases/08-reference.png',
-    reconstructed: '/cases/08-reconstructed.png',
-    scores: ['13/16', '14/16', '14/16'],
-  },
-  {
-    id: '09',
-    title: 'DropoutSeer',
-    reference: '/cases/09-reference.png',
-    reconstructed: '/cases/09-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '10',
-    title: 'CloudDet',
-    reference: '/cases/10-reference.png',
-    reconstructed: '/cases/10-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '11',
-    title: 'Node-Link Diagram',
-    reference: '/cases/11-reference.png',
-    reconstructed: '/cases/11-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '12',
-    title: 'Diverging Stacked Bar',
-    reference: '/cases/12-reference.png',
-    reconstructed: '/cases/12-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '13',
-    title: 'Line with Dots',
-    reference: '/cases/13-reference.png',
-    reconstructed: '/cases/13-reconstructed.png',
-    scores: ['16/16', '15/16', '16/16'],
-  },
-  {
-    id: '14',
-    title: 'Line with Area',
-    reference: '/cases/14-reference.png',
-    reconstructed: '/cases/14-reconstructed.png',
-    scores: ['4/16', '8/16', '8/16'],
-  },
-  {
-    id: '15',
-    title: 'Multiple Bar Charts',
-    reference: '/cases/15-reference.png',
-    reconstructed: '/cases/15-reconstructed.png',
-    scores: ['16/16', '16/16', '16/16'],
-  },
-  {
-    id: '16',
-    title: 'Multiple Stacked Bars',
-    reference: '/cases/16-reference.png',
-    reconstructed: '/cases/16-reconstructed.png',
-    scores: ['16/16', '15/16', '16/16'],
-  },
-  {
-    id: '17',
-    title: 'Multiple Area Charts',
-    reference: '/cases/17-reference.png',
-    reconstructed: '/cases/17-reconstructed.png',
-    scores: ['16/16', '16/16', '8/16'],
-  },
-  {
-    id: '18',
-    title: 'LineUp',
-    reference: '/cases/18-reference.png',
-    reconstructed: '/cases/18-reconstructed.png',
-    scores: ['16/16', '16/16', '6/16'],
-  },
-  {
-    id: '19',
-    title: 'NameClarifier',
-    reference: '/cases/19-reference.png',
-    reconstructed: '/cases/19-reconstructed.png',
-    scores: ['16/16', '16/16', '15/16'],
-  },
-  {
-    id: '20',
-    title: 'EnsembleLens',
-    reference: '/cases/20-reference.png',
-    reconstructed: '/cases/20-reconstructed.png',
-    scores: ['7/16', '13/16', '13/16'],
-  },
+  { id: '01_grid_bar_chart', values: 3, type: 'Composite' },
+  { id: '01_simple_bar_chart', values: 9, type: 'Basic' },
+  { id: '02_radial_bar_chart', values: 3, type: 'Basic' },
+  { id: '02_scatter_plot_matrix', values: 7840, type: 'Composite' },
+  { id: '03_marginal_histograms', values: 20, type: 'Composite' },
+  { id: '03_stacked_bar_chart', values: 60, type: 'Basic' },
+  { id: '04_line_with_highlight', values: 44, type: 'Composite' },
+  { id: '04_radial_stacked_bar_chart', values: 350, type: 'Basic' },
+  { id: '05_box_plot', values: 6, type: 'Composite' },
+  { id: '05_horizontal_stacked_bar', values: 38, type: 'Basic' },
+  { id: '06_grouped_bar_chart', values: 9, type: 'Basic' },
+  { id: '06_OpinionSeer', values: 600, type: 'Composite' },
+  { id: '07_scatter_plot', values: 784, type: 'Basic' },
+  { id: '08_bitextract', values: 28, type: 'Composite' },
+  { id: '08_bubble_plot_1', values: 796, type: 'Basic' },
+  { id: '09_bubble_plot_2', values: 215, type: 'Basic' },
+  { id: '09_DropoutSeer', values: 16, type: 'Composite' },
+  { id: '10_2d_histogram_scatterplot', values: 90, type: 'Basic' },
+  { id: '10_CloudDet', values: 221, type: 'Composite' },
+  { id: '11_2d_histogram_heatmap', values: 750, type: 'Basic' },
+  { id: '11_node_link', values: 180, type: 'Composite' },
+  { id: '12_diverging_stacked_bar', values: 32, type: 'Composite' },
+  { id: '12_strip_plot', values: 150, type: 'Basic' },
+  { id: '13_dot_plot', values: 58, type: 'Basic' },
+  { id: '13_line_and_dot', values: 88, type: 'Composite' },
+  { id: '14_line_and_area', values: 4, type: 'Composite' },
+  { id: '14_pie_chart', values: 6, type: 'Basic' },
+  { id: '15_donut_chart', values: 6, type: 'Basic' },
+  { id: '16_line_chart', values: 22, type: 'Basic' },
+  { id: '18_stacked_area', values: 120, type: 'Basic' },
+  { id: '19_radar_chart', values: 2, type: 'Basic' },
+  { id: '20_EnsembleLens', values: 118, type: 'Composite' },
 ];
+
+function caseTitle(id: string) {
+  return id
+    .replace(/^\d+_/, '')
+    .replaceAll('_', ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase())
+    .replaceAll('2d', '2D');
+}
 
 export default function Home() {
   return (
@@ -151,78 +51,86 @@ export default function Home() {
           <span className="brand-mark">R</span>
           <span>ReVis Gallery</span>
         </a>
-        <span className="header-note">Image-based visualization reproduction</span>
+        <span className="header-note">Reference distribution recovery</span>
       </header>
 
       <section className="hero" id="top">
-        <p className="eyebrow">Reference → Reconstructed</p>
-        <h1>See what ReVis<br />rebuilds from pixels.</h1>
+        <p className="eyebrow">Reference → GPT-5.4 recovered</p>
+        <h1>Real revisions,<br />side by side.</h1>
         <p className="intro">
-          Side-by-side results from our composite visualization study. Each
-          reconstruction is generated from an editable DSL and mocked data.
+          These are the saved results from the working ReVis evaluation—not the
+          older screenshots in the paper. Each result restores a data distribution
+          from its reference image while preserving the original DSL structure.
         </p>
-        <div className="summary" aria-label="Evaluation summary">
-          <span><strong>20</strong> composite cases</span>
-          <span><strong>16</strong> evaluators</span>
-          <span><strong>92.8%</strong> composition match</span>
+        <div className="summary" aria-label="Recovery summary">
+          <span><strong>32 / 40</strong> completed</span>
+          <span><strong>18</strong> basic charts</span>
+          <span><strong>14</strong> composite designs</span>
+          <span><strong>8</strong> pending</span>
         </div>
       </section>
 
       <section className="gallery-shell" aria-labelledby="gallery-title">
         <div className="gallery-heading">
           <div>
-            <p className="eyebrow">Comparison gallery</p>
-            <h2 id="gallery-title">Original design, reconstructed result</h2>
+            <p className="eyebrow">Recovered distribution gallery</p>
+            <h2 id="gallery-title">Reference image, modified result</h2>
           </div>
-          <span className="case-count">Showing {cases.length} cases</span>
+          <span className="case-count">Showing {cases.length} saved recoveries</span>
         </div>
 
         <div className="gallery-grid">
-          {cases.map((item, index) => (
-            <article className="case-card" key={item.id}>
-              <div className="case-title">
-                <span className="case-id">#{item.id}</span>
-                <h3>{item.title}</h3>
-              </div>
-              <div className="comparison">
-                <figure>
-                  <figcaption>Reference</figcaption>
-                  <div className="image-well">
-                    <a href={item.reference} target="_blank" aria-label={`Open reference ${item.title}`}>
-                      <img
-                        src={item.reference}
-                        alt={`Reference ${item.title}`}
-                        loading={index > 1 ? 'lazy' : 'eager'}
-                        fetchPriority={index < 2 ? 'high' : 'auto'}
-                      />
-                    </a>
-                  </div>
-                </figure>
-                <span className="arrow" aria-hidden="true">→</span>
-                <figure>
-                  <figcaption>Reconstructed</figcaption>
-                  <div className="image-well reconstructed">
-                    <a href={item.reconstructed} target="_blank" aria-label={`Open reconstructed ${item.title}`}>
-                      <img
-                        src={item.reconstructed}
-                        alt={`Reconstructed ${item.title}`}
-                        loading={index > 1 ? 'lazy' : 'eager'}
-                        fetchPriority={index < 2 ? 'high' : 'auto'}
-                      />
-                    </a>
-                  </div>
-                </figure>
-              </div>
-              <div className="scores" aria-label="Evaluator agreement">
-                {['Marks', 'Composition', 'Encoding'].map((label, scoreIndex) => (
-                  <span key={label}><small>{label}</small><strong>{item.scores[scoreIndex]}</strong></span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {cases.map((item, index) => {
+            const title = caseTitle(item.id);
+            const reference = `/cases/${item.id}-reference.png`;
+            const recovered = `/cases/${item.id}-recovered.png`;
+            return (
+              <article className="case-card" key={item.id}>
+                <div className="case-title">
+                  <span className="case-id">#{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{title}</h3>
+                  <span className="case-type">{item.type}</span>
+                </div>
+                <div className="comparison">
+                  <figure>
+                    <figcaption>Reference</figcaption>
+                    <div className="image-well">
+                      <a href={reference} target="_blank" aria-label={`Open reference ${title}`}>
+                        <img
+                          src={reference}
+                          alt={`Reference ${title}`}
+                          loading={index > 1 ? 'lazy' : 'eager'}
+                          fetchPriority={index < 2 ? 'high' : 'auto'}
+                        />
+                      </a>
+                    </div>
+                  </figure>
+                  <span className="arrow" aria-hidden="true">→</span>
+                  <figure>
+                    <figcaption>Modified · GPT-5.4</figcaption>
+                    <div className="image-well reconstructed">
+                      <a href={recovered} target="_blank" aria-label={`Open modified ${title}`}>
+                        <img
+                          src={recovered}
+                          alt={`Modified ${title}`}
+                          loading={index > 1 ? 'lazy' : 'eager'}
+                          fetchPriority={index < 2 ? 'high' : 'auto'}
+                        />
+                      </a>
+                    </div>
+                  </figure>
+                </div>
+                <div className="case-meta">
+                  <span><i />Recovered</span>
+                  <span>{item.values.toLocaleString()} generated values</span>
+                </div>
+              </article>
+            );
+          })}
         </div>
         <footer>
-          ReVis generates an editable design scaffold with mocked data; it does not recover the original dataset.
+          Only successful results saved in the working evaluation are shown. ReVis
+          recovers reference-like data distributions; it does not extract the original dataset.
         </footer>
       </section>
     </main>

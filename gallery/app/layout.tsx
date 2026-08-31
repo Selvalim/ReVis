@@ -13,17 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'ReVis Gallery — Reference vs. Reconstructed',
-  description: 'Side-by-side results from the ReVis image-based visualization reproduction study.',
+  title: 'ReVis Gallery — Reference Distribution Recovery',
+  description: 'Side-by-side reference images and saved GPT-5.4 distribution recovery results from ReVis.',
   openGraph: {
-    title: 'ReVis Gallery — Reference vs. Reconstructed',
-    description: 'Explore 20 side-by-side reconstruction results from the ReVis study.',
+    title: 'ReVis Gallery — Reference Distribution Recovery',
+    description: 'Explore 32 saved reference-based distribution recovery results from ReVis.',
     images: ['https://raw.githubusercontent.com/Selvalim/ReVis/main/gallery/public/og.png'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ReVis Gallery — Reference vs. Reconstructed',
-    description: 'Explore 20 side-by-side reconstruction results from the ReVis study.',
+    title: 'ReVis Gallery — Reference Distribution Recovery',
+    description: 'Explore 32 saved reference-based distribution recovery results from ReVis.',
     images: ['https://raw.githubusercontent.com/Selvalim/ReVis/main/gallery/public/og.png'],
   },
 };
