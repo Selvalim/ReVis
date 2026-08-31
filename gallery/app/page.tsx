@@ -1,4 +1,4 @@
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element -- next/image is incompatible with the current Vinext runtime. */
 
 const cases = [
   {
@@ -189,12 +189,11 @@ export default function Home() {
                   <figcaption>Reference</figcaption>
                   <div className="image-well">
                     <a href={item.reference} target="_blank" aria-label={`Open reference ${item.title}`}>
-                      <Image
+                      <img
                         src={item.reference}
                         alt={`Reference ${item.title}`}
-                        fill
-                        sizes="(max-width: 820px) 90vw, 34vw"
-                        priority={index < 2}
+                        loading={index > 1 ? 'lazy' : 'eager'}
+                        fetchPriority={index < 2 ? 'high' : 'auto'}
                       />
                     </a>
                   </div>
@@ -204,12 +203,11 @@ export default function Home() {
                   <figcaption>Reconstructed</figcaption>
                   <div className="image-well reconstructed">
                     <a href={item.reconstructed} target="_blank" aria-label={`Open reconstructed ${item.title}`}>
-                      <Image
+                      <img
                         src={item.reconstructed}
                         alt={`Reconstructed ${item.title}`}
-                        fill
-                        sizes="(max-width: 820px) 90vw, 34vw"
-                        priority={index < 2}
+                        loading={index > 1 ? 'lazy' : 'eager'}
+                        fetchPriority={index < 2 ? 'high' : 'auto'}
                       />
                     </a>
                   </div>
