@@ -1,4 +1,8 @@
+'use client';
+
 /* eslint-disable @next/next/no-img-element -- Vinext currently renders native images more reliably. */
+
+import { useEffect, useState } from 'react';
 
 const cases = [
   { id: '01_grid_bar_chart', values: 3, type: 'Composite' },
@@ -44,6 +48,30 @@ function caseTitle(id: string) {
 }
 
 export default function Home() {
+  const [selectedCase, setSelectedCase] = useState<number | null>(null);
+  const selected = selectedCase === null ? null : cases[selectedCase];
+
+  useEffect(() => {
+    if (selectedCase === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedCase(null);
+      if (event.key === 'ArrowLeft') {
+        setSelectedCase((current) => current === null ? null : (current - 1 + cases.length) % cases.length);
+      }
+      if (event.key === 'ArrowRight') {
+        setSelectedCase((current) => current === null ? null : (current + 1) % cases.length);
+      }
+    };
+
+    document.body.classList.add('modal-open');
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.classList.remove('modal-open');
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedCase]);
+
   return (
     <main>
       <header className="site-header">
@@ -74,9 +102,9 @@ export default function Home() {
         <div className="gallery-heading">
           <div>
             <p className="eyebrow">Recovered distribution gallery</p>
-            <h2 id="gallery-title">Reference image, modified result</h2>
+            <h2 id="gallery-title">Input image, our output</h2>
           </div>
-          <span className="case-count">Showing {cases.length} saved recoveries</span>
+          <span className="case-count">Click either image to open the full comparison</span>
         </div>
 
         <div className="gallery-grid">
@@ -93,30 +121,30 @@ export default function Home() {
                 </div>
                 <div className="comparison">
                   <figure>
-                    <figcaption>Reference</figcaption>
+                    <figcaption>Input · Reference</figcaption>
                     <div className="image-well">
-                      <a href={reference} target="_blank" aria-label={`Open reference ${title}`}>
+                      <button type="button" onClick={() => setSelectedCase(index)} aria-label={`Open input and output comparison for ${title}`}>
                         <img
                           src={reference}
                           alt={`Reference ${title}`}
                           loading={index > 1 ? 'lazy' : 'eager'}
                           fetchPriority={index < 2 ? 'high' : 'auto'}
                         />
-                      </a>
+                      </button>
                     </div>
                   </figure>
                   <span className="arrow" aria-hidden="true">→</span>
                   <figure>
-                    <figcaption>Modified · GPT-5.4</figcaption>
+                    <figcaption>Our output · ReVis</figcaption>
                     <div className="image-well reconstructed">
-                      <a href={recovered} target="_blank" aria-label={`Open modified ${title}`}>
+                      <button type="button" onClick={() => setSelectedCase(index)} aria-label={`Open input and output comparison for ${title}`}>
                         <img
                           src={recovered}
                           alt={`Modified ${title}`}
                           loading={index > 1 ? 'lazy' : 'eager'}
                           fetchPriority={index < 2 ? 'high' : 'auto'}
                         />
-                      </a>
+                      </button>
                     </div>
                   </figure>
                 </div>
@@ -133,6 +161,50 @@ export default function Home() {
           recovers reference-like data distributions; it does not extract the original dataset.
         </footer>
       </section>
+
+      {selected && selectedCase !== null && (
+        <div className="lightbox" role="presentation" onClick={() => setSelectedCase(null)}>
+          <section
+            className="lightbox-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lightbox-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <header className="lightbox-header">
+              <div>
+                <span className="case-id">#{String(selectedCase + 1).padStart(2, '0')}</span>
+                <h2 id="lightbox-title">{caseTitle(selected.id)}</h2>
+              </div>
+              <button className="lightbox-close" type="button" onClick={() => setSelectedCase(null)} aria-label="Close comparison">×</button>
+            </header>
+
+            <div className="lightbox-comparison">
+              <figure>
+                <figcaption><span>Input</span>Reference image</figcaption>
+                <div className="lightbox-image">
+                  <img src={`/cases/${selected.id}-reference.png`} alt={`Input reference ${caseTitle(selected.id)}`} />
+                </div>
+              </figure>
+              <span className="lightbox-arrow" aria-hidden="true">→</span>
+              <figure>
+                <figcaption><span>Our output</span>ReVis · GPT-5.4</figcaption>
+                <div className="lightbox-image output">
+                  <img src={`/cases/${selected.id}-recovered.png`} alt={`ReVis output ${caseTitle(selected.id)}`} />
+                </div>
+              </figure>
+            </div>
+
+            <footer className="lightbox-footer">
+              <span>{selected.values.toLocaleString()} generated values</span>
+              <div className="lightbox-nav">
+                <button type="button" onClick={() => setSelectedCase((selectedCase - 1 + cases.length) % cases.length)}>← Previous</button>
+                <button type="button" onClick={() => setSelectedCase((selectedCase + 1) % cases.length)}>Next →</button>
+              </div>
+            </footer>
+          </section>
+        </div>
+      )}
     </main>
   );
 }
