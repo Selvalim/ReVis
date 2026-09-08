@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "case_id": "05_horizontal_stacked_bar",
+  "chart_type": "Basic",
+  "model": "gpt-5.4",
+  "saved_at": "2026-08-31T14:41:50.394Z",
+  "prompt": "请观察左侧参考图，恢复当前 DSL 的真实数据分布。保持容器层级、图元类型、数量和数据结构不变；根据参考图重建尺寸、位置、峰值、聚集区域、稀疏区域和自然波动。不要生成均匀、对称或无依据的全局单调分布。",
+  "summary": "已根据参考图重建 19 行双侧水平堆叠条的真实尺寸分布，使用显式 x.data_values 恢复左右两侧在各行中的长度变化、顶部中高位平台、中段缓降及底部右侧明显收缩的非均匀波动。",
+  "reference_image_used": true,
+  "generated_value_count": 38,
+  "dsl": {
+    "container_id": "0",
+    "coordinate": "cartesian",
+    "description": "Single panel with many horizontally aligned rectangles arranged in rows. Each row contains two opposing rectangles that meet at a central vertical boundary—one extending left and one extending right. Rows are stacked with narrow gaps, forming a mirrored/diverging set of bars across the vertical space. Only rectangles encode data; other elements (gridlines/labels/axes) are ignored.",
+    "coordinate_system": {
+      "x1": "0",
+      "y1": "0",
+      "x2": "100",
+      "y2": "108"
+    },
+    "if_leaf": true,
+    "mark_type": "rectangle",
+    "components": null,
+    "data_specification": {
+      "0": {
+        "mark_specification": {
+          "mark_type": "rectangle",
+          "is_link_mark": false,
+          "link_mark_type": "no_link",
+          "group_link_direction": null,
+          "link_number": null,
+          "is_width_encoded_data": false,
+          "node_use_once": false,
+          "is_fully_connected": false,
+          "is_bipartite": false
+        },
+        "data_structure": {
+          "data_type": "2D_MATRIX",
+          "data_size": {
+            "primary": {
+              "number": 19,
+              "dimension": "y",
+              "explanation": "Many rows stacked vertically; each row is a pair of opposing bars."
+            },
+            "secondary": {
+              "number": 2,
+              "dimension": "x",
+              "explanation": "Two rectangles per row: one extends left and one extends right from the center."
+            }
+          }
+        },
+        "layout_specification": {
+          "x": {
+            "stacking": true,
+            "stacking_direction": "middle",
+            "anchor": "middle",
+            "subdividing": true,
+            "2d_flatten": false,
+            "size_uniform": false,
+            "size_range": [
+              1,
+              50
+            ],
+            "anchor_distribute": "fixed_value",
+            "anchor_interval": 0,
+            "anchor_start": 50,
+            "data_values": [
+              [
+                45.06266184215615,
+                47.12229868687854
+              ],
+              [
+                48.71946877147866,
+                50
+              ],
+              [
+                48.49131347673189,
+                50
+              ],
+              [
+                46.835945919235265,
+                48.42912076328308
+              ],
+              [
+                45.12890192654041,
+                47.11092475644157
+              ],
+              [
+                46.12704870626737,
+                46.74306522568398
+              ],
+              [
+                48.99973815016855,
+                48.34494193143091
+              ],
+              [
+                50,
+                47.5033218904611
+              ],
+              [
+                49.36757686605526,
+                46.86459898649354
+              ],
+              [
+                44.07666895413614,
+                40.82631693856505
+              ],
+              [
+                38.28064286839043,
+                34.95684207946475
+              ],
+              [
+                29.734944298477856,
+                26.49270977998671
+              ],
+              [
+                24.368628638265175,
+                21.04761347030212
+              ],
+              [
+                20.640568406057067,
+                18.300460122221725
+              ],
+              [
+                22.266703650787477,
+                15.576811542284355
+              ],
+              [
+                18.733777249473277,
+                11.969036491825884
+              ],
+              [
+                13.864632005159105,
+                7.813229634909602
+              ],
+              [
+                8.520433876386628,
+                3.985859297583164
+              ],
+              [
+                4.573217651308364,
+                1.3807291638293218
+              ]
+            ]
+          },
+          "y": {
+            "stacking": true,
+            "stacking_direction": "min",
+            "anchor": "stacking_decided",
+            "subdividing": true,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              4,
+              4
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 5,
+            "anchor_start": 2
+          },
+          "radius": null,
+          "angle": null,
+          "source": null,
+          "target": null
+        },
+        "non_layout_specification": {
+          "fill": {
+            "scale": "ordinal_secondary",
+            "fix": null,
+            "linear": null,
+            "options": [
+              "#6A4C93",
+              "#D88D64"
+            ]
+          },
+          "stroke": {
+            "scale": "fix",
+            "fix": "#FFFFFF",
+            "linear": null,
+            "options": null
+          },
+          "stroke-width": {
+            "scale": "fix",
+            "fix": 0.5,
+            "linear": null,
+            "options": null
+          },
+          "opacity": {
+            "scale": "fix",
+            "fix": 1,
+            "linear": null,
+            "options": null
+          },
+          "line_type": null,
+          "rx": null,
+          "ry": null
+        }
+      }
+    }
+  },
+  "recovered_data": {
+    "format": "JSON Pointer paths into the complete DSL above",
+    "fields": [
+      {
+        "path": "/data_specification/0/layout_specification/x/data_values",
+        "kind": "data_values",
+        "value": [
+          [
+            45.06266184215615,
+            47.12229868687854
+          ],
+          [
+            48.71946877147866,
+            50
+          ],
+          [
+            48.49131347673189,
+            50
+          ],
+          [
+            46.835945919235265,
+            48.42912076328308
+          ],
+          [
+            45.12890192654041,
+            47.11092475644157
+          ],
+          [
+            46.12704870626737,
+            46.74306522568398
+          ],
+          [
+            48.99973815016855,
+            48.34494193143091
+          ],
+          [
+            50,
+            47.5033218904611
+          ],
+          [
+            49.36757686605526,
+            46.86459898649354
+          ],
+          [
+            44.07666895413614,
+            40.82631693856505
+          ],
+          [
+            38.28064286839043,
+            34.95684207946475
+          ],
+          [
+            29.734944298477856,
+            26.49270977998671
+          ],
+          [
+            24.368628638265175,
+            21.04761347030212
+          ],
+          [
+            20.640568406057067,
+            18.300460122221725
+          ],
+          [
+            22.266703650787477,
+            15.576811542284355
+          ],
+          [
+            18.733777249473277,
+            11.969036491825884
+          ],
+          [
+            13.864632005159105,
+            7.813229634909602
+          ],
+          [
+            8.520433876386628,
+            3.985859297583164
+          ],
+          [
+            4.573217651308364,
+            1.3807291638293218
+          ]
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "case_id": "01_grid_bar_chart",
+  "chart_type": "Composite",
+  "model": "gpt-5.4",
+  "saved_at": "2026-08-31T14:41:50.371Z",
+  "prompt": "请观察左侧参考图，恢复当前 DSL 的真实数据分布。保持容器层级、图元类型、数量和数据结构不变；根据参考图重建尺寸、位置、峰值、聚集区域、稀疏区域和自然波动。不要生成均匀、对称或无依据的全局单调分布。",
+  "summary": "已修正所有 data_values 到合法区间 [5,95] 内，并保持完整 DSL、容器层级、图元类型、数量与数据结构不变。由于该 DSL 的单个代表性面板仅支持一维 3 项数据，无法仅靠数据字段恢复 3×3 九个面板各自不同的真实分布，因此仅为代表性面板提供一组合法且接近参考图左上面板风格的长度值。",
+  "reference_image_used": true,
+  "generated_value_count": 3,
+  "dsl": {
+    "container_id": "0",
+    "coordinate": "cartesian",
+    "description": "A 3x3 grid of small-multiple panels. Each panel contains only horizontal bar marks (rectangles) arranged in three stacked rows; bar lengths vary per panel. Frames, gridlines, and axes are ignored.",
+    "coordinate_system": {
+      "x1": "0",
+      "y1": "0",
+      "x2": "100",
+      "y2": "100"
+    },
+    "if_leaf": false,
+    "mark_type": null,
+    "components": [
+      {
+        "container_id": "0-a",
+        "coordinate": "cartesian",
+        "description": "Template for a single repeated panel of three left-aligned horizontal rectangles stacked vertically; laid out in a 3x3 2D grid. The template’s coordinate spans the outer boundary of all panel instances.",
+        "coordinate_system": {
+          "x1": "0",
+          "y1": "0",
+          "x2": "100",
+          "y2": "100"
+        },
+        "if_leaf": false,
+        "mark_type": null,
+        "components": [
+          {
+            "container_id": "0-a-0",
+            "coordinate": "cartesian",
+            "description": "Representative panel: three left-aligned horizontal rectangles stacked vertically with small gaps; lengths vary within the panel.",
+            "coordinate_system": {
+              "x1": "0",
+              "y1": "0",
+              "x2": "33.33",
+              "y2": "33.33"
+            },
+            "if_leaf": true,
+            "mark_type": "rectangle",
+            "components": null
+          }
+        ]
+      }
+    ],
+    "template_data_specification": {
+      "0-a": {
+        "container_id": "0-a",
+        "data_structure": {
+          "data_type": "2D_MATRIX",
+          "data_size": {
+            "primary": {
+              "number": 3,
+              "dimension": "x",
+              "explanation": "Three equally spaced columns along x."
+            },
+            "secondary": {
+              "number": 3,
+              "dimension": "y",
+              "explanation": "Three equally spaced rows along y."
+            }
+          }
+        },
+        "layout_specification": {
+          "x": {
+            "stacking": false,
+            "stacking_direction": "min",
+            "anchor": "min",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              33.33,
+              33.33
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 33.33,
+            "anchor_start": 0
+          },
+          "y": {
+            "stacking": false,
+            "stacking_direction": "min",
+            "anchor": "min",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              33.33,
+              33.33
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 33.33,
+            "anchor_start": 0
+          },
+          "radius": null,
+          "angle": null,
+          "source": null,
+          "target": null
+        }
+      }
+    },
+    "data_specification": {
+      "0-a-0": {
+        "mark_specification": {
+          "mark_type": "rectangle",
+          "is_link_mark": false,
+          "link_mark_type": "no_link",
+          "group_link_direction": null,
+          "link_number": null,
+          "is_width_encoded_data": false,
+          "node_use_once": false,
+          "is_fully_connected": false,
+          "is_bipartite": false
+        },
+        "data_structure": {
+          "data_type": "1D_LIST",
+          "data_size": {
+            "primary": {
+              "number": 3,
+              "dimension": "y",
+              "explanation": "Three horizontal bars stacked along y within one panel."
+            },
+            "secondary": null
+          }
+        },
+        "layout_specification": {
+          "x": {
+            "stacking": false,
+            "stacking_direction": "min",
+            "anchor": "min",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": false,
+            "size_range": [
+              5,
+              95
+            ],
+            "anchor_distribute": "fixed_value",
+            "anchor_interval": 0,
+            "anchor_start": 0,
+            "data_values": [
+              12,
+              59,
+              5
+            ]
+          },
+          "y": {
+            "stacking": false,
+            "stacking_direction": "min",
+            "anchor": "min",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              25,
+              25
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 33.33,
+            "anchor_start": 0
+          },
+          "radius": null,
+          "angle": null,
+          "source": null,
+          "target": null
+        },
+        "non_layout_specification": {
+          "fill": {
+            "scale": "ordinal_primary",
+            "fix": null,
+            "linear": null,
+            "options": [
+              "#3F6BAA",
+              "#F28C28",
+              "#E15759"
+            ]
+          },
+          "stroke": null,
+          "stroke-width": null,
+          "opacity": null,
+          "line_type": null,
+          "rx": null,
+          "ry": null
+        }
+      }
+    }
+  },
+  "recovered_data": {
+    "format": "JSON Pointer paths into the complete DSL above",
+    "fields": [
+      {
+        "path": "/data_specification/0-a-0/layout_specification/x/data_values",
+        "kind": "data_values",
+        "value": [
+          12,
+          59,
+          5
+        ]
+      }
+    ]
+  }
+}

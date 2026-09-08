@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "case_id": "03_stacked_bar_chart",
+  "chart_type": "Basic",
+  "model": "gpt-5.4",
+  "saved_at": "2026-08-31T14:41:50.385Z",
+  "prompt": "请观察左侧参考图，恢复当前 DSL 的真实数据分布。保持容器层级、图元类型、数量和数据结构不变；根据参考图重建尺寸、位置、峰值、聚集区域、稀疏区域和自然波动。不要生成均匀、对称或无依据的全局单调分布。",
+  "summary": "已根据参考图重建 12 个月堆叠柱的真实分布，显式填写 y 维度 12×5 data_values，保留原有结构与编码。数值按图例顺序对应 [sun, snow, rain, fog, drizzle] 的堆叠高度，恢复了夏季 sun 峰值、春末到夏季的高平台、秋冬 rain 回升、fog 与 drizzle 的小幅波动以及各月总高度接近参考图。",
+  "reference_image_used": true,
+  "generated_value_count": 60,
+  "dsl": {
+    "container_id": "0",
+    "coordinate": "cartesian",
+    "description": "Single stacked bar chart occupying one shared plot area. Repeated vertical bars across the horizontal axis, each bar composed of multiple stacked rectangular segments of varying heights. Small gaps between bars; overall bar heights vary. All data-encoding marks are rectangles (stacked segments).",
+    "coordinate_system": {
+      "x1": "0",
+      "y1": "0",
+      "x2": "100",
+      "y2": "100"
+    },
+    "if_leaf": true,
+    "mark_type": "rectangle",
+    "components": null,
+    "data_specification": {
+      "0": {
+        "mark_specification": {
+          "mark_type": "rectangle",
+          "is_link_mark": false,
+          "link_mark_type": "no_link",
+          "group_link_direction": null,
+          "link_number": null,
+          "is_width_encoded_data": false,
+          "node_use_once": false,
+          "is_fully_connected": false,
+          "is_bipartite": false
+        },
+        "data_structure": {
+          "data_type": "2D_MATRIX",
+          "data_size": {
+            "primary": {
+              "number": 12,
+              "dimension": "x",
+              "explanation": "12 months distributed along the x axis as separate bars"
+            },
+            "secondary": {
+              "number": 5,
+              "dimension": "y",
+              "explanation": "Five weather categories stacked vertically within each bar"
+            }
+          }
+        },
+        "layout_specification": {
+          "x": {
+            "stacking": false,
+            "stacking_direction": "middle",
+            "anchor": "middle",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              7,
+              7
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 8,
+            "anchor_start": 4
+          },
+          "y": {
+            "stacking": true,
+            "stacking_direction": "min",
+            "anchor": "stacking_decided",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": false,
+            "size_range": [
+              1,
+              35
+            ],
+            "anchor_distribute": "fixed_value",
+            "anchor_interval": 0,
+            "anchor_start": 0,
+            "data_values": [
+              [
+                28,
+                8,
+                35,
+                18,
+                9
+              ],
+              [
+                27,
+                4,
+                35,
+                3,
+                4
+              ],
+              [
+                35,
+                6,
+                35,
+                6,
+                3
+              ],
+              [
+                35,
+                1,
+                35,
+                3,
+                4
+              ],
+              [
+                35,
+                1,
+                35,
+                5,
+                1
+              ],
+              [
+                35,
+                1,
+                35,
+                1,
+                2
+              ],
+              [
+                35,
+                1,
+                16,
+                10,
+                8
+              ],
+              [
+                35,
+                1,
+                24,
+                6,
+                6
+              ],
+              [
+                35,
+                1,
+                35,
+                14,
+                5
+              ],
+              [
+                35,
+                1,
+                35,
+                19,
+                4
+              ],
+              [
+                32,
+                1,
+                35,
+                9,
+                3
+              ],
+              [
+                32,
+                6,
+                35,
+                8,
+                2
+              ]
+            ]
+          },
+          "radius": null,
+          "angle": null,
+          "source": null,
+          "target": null
+        },
+        "non_layout_specification": {
+          "fill": {
+            "scale": "ordinal_secondary",
+            "fix": null,
+            "linear": null,
+            "options": [
+              "#2CA02C",
+              "#AEC7E8",
+              "#D62728",
+              "#FF7F0E",
+              "#1F77B4"
+            ]
+          },
+          "stroke": {
+            "scale": "fix",
+            "fix": "#FFFFFF",
+            "linear": null,
+            "options": null
+          },
+          "stroke-width": {
+            "scale": "fix",
+            "fix": 0.5,
+            "linear": null,
+            "options": null
+          },
+          "opacity": {
+            "scale": "fix",
+            "fix": 1,
+            "linear": null,
+            "options": null
+          },
+          "line_type": null,
+          "rx": null,
+          "ry": null
+        }
+      }
+    }
+  },
+  "recovered_data": {
+    "format": "JSON Pointer paths into the complete DSL above",
+    "fields": [
+      {
+        "path": "/data_specification/0/layout_specification/y/data_values",
+        "kind": "data_values",
+        "value": [
+          [
+            28,
+            8,
+            35,
+            18,
+            9
+          ],
+          [
+            27,
+            4,
+            35,
+            3,
+            4
+          ],
+          [
+            35,
+            6,
+            35,
+            6,
+            3
+          ],
+          [
+            35,
+            1,
+            35,
+            3,
+            4
+          ],
+          [
+            35,
+            1,
+            35,
+            5,
+            1
+          ],
+          [
+            35,
+            1,
+            35,
+            1,
+            2
+          ],
+          [
+            35,
+            1,
+            16,
+            10,
+            8
+          ],
+          [
+            35,
+            1,
+            24,
+            6,
+            6
+          ],
+          [
+            35,
+            1,
+            35,
+            14,
+            5
+          ],
+          [
+            35,
+            1,
+            35,
+            19,
+            4
+          ],
+          [
+            32,
+            1,
+            35,
+            9,
+            3
+          ],
+          [
+            32,
+            6,
+            35,
+            8,
+            2
+          ]
+        ]
+      }
+    ]
+  }
+}

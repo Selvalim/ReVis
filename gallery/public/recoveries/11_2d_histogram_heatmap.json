@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "case_id": "11_2d_histogram_heatmap",
+  "chart_type": "Basic",
+  "model": "gpt-5.4",
+  "saved_at": "2026-08-31T14:41:50.442Z",
+  "prompt": "请观察左侧参考图，恢复当前 DSL 的真实数据分布。保持容器层级、图元类型、数量和数据结构不变；根据参考图重建尺寸、位置、峰值、聚集区域、稀疏区域和自然波动。不要生成均匀、对称或无依据的全局单调分布。",
+  "summary": "已根据参考图为该 30×25 热力图恢复非均匀二维分布：主密度沿左下到右上的对角带上升，在中高评分与高番茄值区域形成最强峰值，并保留低值稀疏散点、局部空洞和自然波动。使用紧凑 value_generator 表达稠密热图数值场。",
+  "reference_image_used": true,
+  "generated_value_count": 750,
+  "dsl": {
+    "container_id": "0",
+    "coordinate": "cartesian",
+    "description": "Single-panel heatmap: a dense rectangular plotting region filled with many small, equally sized rectangles arranged in a grid. Rectangles vary in color intensity and cover most of the central-left area of the canvas, leaving margins for axes and a right-side legend (ignored). No additional overlaid lines, areas, or connectors.",
+    "coordinate_system": {
+      "x1": "0",
+      "y1": "0",
+      "x2": "100",
+      "y2": "100"
+    },
+    "if_leaf": true,
+    "mark_type": "rectangle",
+    "components": null,
+    "data_specification": {
+      "0": {
+        "mark_specification": {
+          "mark_type": "rectangle",
+          "is_link_mark": false,
+          "link_mark_type": "no_link",
+          "group_link_direction": null,
+          "link_number": null,
+          "is_width_encoded_data": false,
+          "node_use_once": false,
+          "is_fully_connected": false,
+          "is_bipartite": false
+        },
+        "data_structure": {
+          "data_type": "2D_MATRIX",
+          "data_size": {
+            "primary": {
+              "number": 30,
+              "dimension": "x",
+              "explanation": "Heatmap bins form a regular grid; approximately 30 columns along x."
+            },
+            "secondary": {
+              "number": 25,
+              "dimension": "y",
+              "explanation": "Regular grid rows; approximately 25 bins along y."
+            }
+          }
+        },
+        "layout_specification": {
+          "x": {
+            "stacking": true,
+            "stacking_direction": "min",
+            "anchor": "stacking_decided",
+            "subdividing": true,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              3.33,
+              3.33
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 3.33,
+            "anchor_start": 0
+          },
+          "y": {
+            "stacking": true,
+            "stacking_direction": "min",
+            "anchor": "stacking_decided",
+            "subdividing": true,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              4,
+              4
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 4,
+            "anchor_start": 0
+          },
+          "radius": null,
+          "angle": null,
+          "source": null,
+          "target": null
+        },
+        "non_layout_specification": {
+          "fill": {
+            "scale": "linear",
+            "fix": null,
+            "linear": [
+              "#E5F5C9",
+              "#08519C"
+            ],
+            "options": null
+          },
+          "stroke": null,
+          "stroke-width": null,
+          "opacity": null,
+          "line_type": null,
+          "rx": null,
+          "ry": null
+        },
+        "value_generator": {
+          "type": "gaussian_field",
+          "seed": 12345,
+          "background": 0.8,
+          "noise": 1.6,
+          "peaks": [
+            {
+              "center": [
+                18,
+                8
+              ],
+              "spread": [
+                10,
+                7
+              ],
+              "amplitude": 6,
+              "correlation": 0.2
+            },
+            {
+              "center": [
+                32,
+                18
+              ],
+              "spread": [
+                12,
+                10
+              ],
+              "amplitude": 7,
+              "correlation": 0.45
+            },
+            {
+              "center": [
+                46,
+                32
+              ],
+              "spread": [
+                13,
+                11
+              ],
+              "amplitude": 10,
+              "correlation": 0.6
+            },
+            {
+              "center": [
+                58,
+                52
+              ],
+              "spread": [
+                12,
+                14
+              ],
+              "amplitude": 15,
+              "correlation": 0.72
+            },
+            {
+              "center": [
+                70,
+                74
+              ],
+              "spread": [
+                11,
+                12
+              ],
+              "amplitude": 18,
+              "correlation": 0.82
+            },
+            {
+              "center": [
+                82,
+                92
+              ],
+              "spread": [
+                8,
+                7
+              ],
+              "amplitude": 24,
+              "correlation": 0.7
+            },
+            {
+              "center": [
+                60,
+                18
+              ],
+              "spread": [
+                9,
+                8
+              ],
+              "amplitude": 8,
+              "correlation": 0.15
+            },
+            {
+              "center": [
+                66,
+                60
+              ],
+              "spread": [
+                6,
+                20
+              ],
+              "amplitude": 7,
+              "correlation": 0.25
+            }
+          ]
+        }
+      }
+    }
+  },
+  "recovered_data": {
+    "format": "JSON Pointer paths into the complete DSL above",
+    "fields": [
+      {
+        "path": "/data_specification/0/value_generator",
+        "kind": "value_generator",
+        "value": {
+          "type": "gaussian_field",
+          "seed": 12345,
+          "background": 0.8,
+          "noise": 1.6,
+          "peaks": [
+            {
+              "center": [
+                18,
+                8
+              ],
+              "spread": [
+                10,
+                7
+              ],
+              "amplitude": 6,
+              "correlation": 0.2
+            },
+            {
+              "center": [
+                32,
+                18
+              ],
+              "spread": [
+                12,
+                10
+              ],
+              "amplitude": 7,
+              "correlation": 0.45
+            },
+            {
+              "center": [
+                46,
+                32
+              ],
+              "spread": [
+                13,
+                11
+              ],
+              "amplitude": 10,
+              "correlation": 0.6
+            },
+            {
+              "center": [
+                58,
+                52
+              ],
+              "spread": [
+                12,
+                14
+              ],
+              "amplitude": 15,
+              "correlation": 0.72
+            },
+            {
+              "center": [
+                70,
+                74
+              ],
+              "spread": [
+                11,
+                12
+              ],
+              "amplitude": 18,
+              "correlation": 0.82
+            },
+            {
+              "center": [
+                82,
+                92
+              ],
+              "spread": [
+                8,
+                7
+              ],
+              "amplitude": 24,
+              "correlation": 0.7
+            },
+            {
+              "center": [
+                60,
+                18
+              ],
+              "spread": [
+                9,
+                8
+              ],
+              "amplitude": 8,
+              "correlation": 0.15
+            },
+            {
+              "center": [
+                66,
+                60
+              ],
+              "spread": [
+                6,
+                20
+              ],
+              "amplitude": 7,
+              "correlation": 0.25
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

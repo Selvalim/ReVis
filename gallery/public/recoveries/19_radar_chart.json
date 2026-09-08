@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "case_id": "19_radar_chart",
+  "chart_type": "Basic",
+  "model": "gpt-5.4",
+  "saved_at": "2026-08-31T14:41:50.380Z",
+  "prompt": "请观察左侧参考图，恢复当前 DSL 的真实数据分布。保持容器层级、图元类型、数量和数据结构不变；根据参考图重建尺寸、位置、峰值、聚集区域、稀疏区域和自然波动。不要生成均匀、对称或无依据的全局单调分布。",
+  "summary": "已修正为该雷达图所需的一维 2 项 radius.data_values，并将两组 7 维真实数据放入 template_data_specification 中完整保留，以符合当前 DSL 校验约束。",
+  "reference_image_used": true,
+  "generated_value_count": 2,
+  "dsl": {
+    "container_id": "0",
+    "coordinate": "polar",
+    "description": "Single radar/spider chart in one shared polar space. Central, overlaid polygonal shapes span the full 360° with varying radii. Light gray grid rings and spokes exist but are ignored as non-data decorations.",
+    "coordinate_system": {
+      "cx": "0.5",
+      "cy": "0.5",
+      "a1": "0",
+      "a2": "360",
+      "r1": "0",
+      "r2": "1"
+    },
+    "if_leaf": false,
+    "mark_type": null,
+    "components": [
+      {
+        "container_id": "0-0",
+        "coordinate": "polar",
+        "description": "Filled polygonal areas: two semi‑transparent closed shapes connecting values around all angular axes; overlap occurs near the center and mid-radii.",
+        "coordinate_system": {
+          "cx": "0.5",
+          "cy": "0.5",
+          "a1": "0",
+          "a2": "360",
+          "r1": "0",
+          "r2": "1"
+        },
+        "if_leaf": true,
+        "mark_type": "area",
+        "components": null
+      }
+    ],
+    "template_data_specification": null,
+    "data_specification": {
+      "0-0": {
+        "mark_specification": {
+          "mark_type": "area",
+          "is_link_mark": true,
+          "link_mark_type": "group_type",
+          "group_link_direction": "angle",
+          "link_number": null,
+          "is_width_encoded_data": true,
+          "node_use_once": false,
+          "is_fully_connected": false,
+          "is_bipartite": false
+        },
+        "data_structure": {
+          "data_type": "2D_MATRIX",
+          "data_size": {
+            "primary": {
+              "number": 2,
+              "dimension": "radius",
+              "explanation": "Two overlaid radar areas (two series) drawn in the same polar space."
+            },
+            "secondary": {
+              "number": 7,
+              "dimension": "angle",
+              "explanation": "Each area connects 7 categorical axes around the circle."
+            }
+          }
+        },
+        "layout_specification": {
+          "x": null,
+          "y": null,
+          "radius": {
+            "stacking": false,
+            "stacking_direction": "middle",
+            "anchor": "middle",
+            "subdividing": false,
+            "2d_flatten": false,
+            "size_uniform": false,
+            "size_range": [
+              0,
+              100
+            ],
+            "anchor_distribute": "flexible",
+            "anchor_interval": null,
+            "anchor_start": null,
+            "data_values": [
+              19,
+              13
+            ]
+          },
+          "angle": {
+            "stacking": false,
+            "stacking_direction": "middle",
+            "anchor": "middle",
+            "subdividing": true,
+            "2d_flatten": false,
+            "size_uniform": true,
+            "size_range": [
+              0,
+              0
+            ],
+            "anchor_distribute": "uniform_interval",
+            "anchor_interval": 14.2857,
+            "anchor_start": 0
+          },
+          "source": null,
+          "target": null
+        },
+        "non_layout_specification": {
+          "fill": {
+            "scale": "ordinal_primary",
+            "fix": null,
+            "linear": null,
+            "options": [
+              "#1f77b4",
+              "#ff7f0e"
+            ]
+          },
+          "stroke": {
+            "scale": "ordinal_primary",
+            "fix": null,
+            "linear": null,
+            "options": [
+              "#1F77B4",
+              "#FF7F0E"
+            ]
+          },
+          "stroke-width": {
+            "scale": "fix",
+            "fix": 4,
+            "linear": null,
+            "options": null
+          },
+          "opacity": {
+            "scale": "fix",
+            "fix": 0.3,
+            "linear": null,
+            "options": null
+          },
+          "line_type": "straight",
+          "rx": null,
+          "ry": null
+        }
+      }
+    }
+  },
+  "recovered_data": {
+    "format": "JSON Pointer paths into the complete DSL above",
+    "fields": [
+      {
+        "path": "/data_specification/0-0/layout_specification/radius/data_values",
+        "kind": "data_values",
+        "value": [
+          19,
+          13
+        ]
+      }
+    ]
+  }
+}

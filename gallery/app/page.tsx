@@ -78,7 +78,12 @@ export default function Home() {
             <p className="eyebrow">Recovered distribution gallery</p>
             <h2 id="gallery-title">Reference image, modified result</h2>
           </div>
-          <span className="case-count">Showing {cases.length} saved recoveries</span>
+          <div className="gallery-actions">
+            <span className="case-count">Showing {cases.length} saved recoveries</span>
+            <a className="manifest-link" href="/recoveries/index.json" target="_blank">
+              Download manifest
+            </a>
+          </div>
         </div>
 
         <div className="gallery-grid">
@@ -133,6 +138,9 @@ export default function Home() {
                 <div className="case-meta">
                   <span><i />Recovered</span>
                   <span>{item.values.toLocaleString()} generated values</span>
+                  <a href={`/recoveries/${item.id}.json`} target="_blank">
+                    DSL + data ↓
+                  </a>
                 </div>
               </article>
             );
@@ -141,6 +149,8 @@ export default function Home() {
         <footer>
           Only successful results saved in the working evaluation are shown. ReVis
           recovers reference-like data distributions; it does not extract the original dataset.
+          Each downloadable artifact includes the complete recovered DSL and an indexed copy
+          of every recovered data field.
         </footer>
       </section>
     </main>
